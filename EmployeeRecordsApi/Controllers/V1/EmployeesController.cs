@@ -31,5 +31,11 @@ namespace EmployeeRecordsApi.Controllers.V1
                     StatusCode = (int)HttpStatusCode.Created
                 };
         }
+
+        [HttpGet]
+        public IActionResult Retrieve()//Todo: Add paging
+        {
+            return Ok(_iEmployeeService.Retrieve());
+        }
     }
 }

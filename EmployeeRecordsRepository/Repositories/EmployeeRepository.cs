@@ -2,6 +2,8 @@
 using EmployeeRecordsRepository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EmployeeRecordsRepository.Repositories
 {
@@ -30,6 +32,13 @@ namespace EmployeeRecordsRepository.Repositories
                 .State = EntityState.Detached;
 
             return employee.Id;
+        }
+
+        public IEnumerable<Employee> Retrieve()
+        {
+            return _employeeRecordsContext
+                .Employees
+                .AsEnumerable();
         }
     }
 }
