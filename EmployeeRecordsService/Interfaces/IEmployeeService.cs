@@ -8,5 +8,6 @@ namespace EmployeeRecordsService.Interfaces
     {
         Result<long> Create(EmployeeCreateDto employeeCreateDto);
         IEnumerable<EmployeeDto> Retrieve();
+        Result Delete(long id);
     }
 }

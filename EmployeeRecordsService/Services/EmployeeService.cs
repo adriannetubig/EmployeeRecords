@@ -48,5 +48,17 @@ namespace EmployeeRecordsService.Services
                     LastName = a.Name.Last
                 });
         }
+
+        public Result Delete(long id)
+        {
+            var employee = _iEmployeeRepository.Retrieve(id);
+
+            if (employee == null)
+                return Result.Failure("Employee does not exists");
+
+            _iEmployeeRepository.Delete(employee);
+
+            return Result.Success();
+        }
     }
 }

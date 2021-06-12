@@ -37,5 +37,16 @@ namespace EmployeeRecordsApi.Controllers.V1
         {
             return Ok(_iEmployeeService.Retrieve());
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var deleteResult = _iEmployeeService.Delete(id);
+
+            if (deleteResult.IsFailure)
+                return NotFound(deleteResult.Error);
+            else
+                return NoContent();
+        }
     }
 }

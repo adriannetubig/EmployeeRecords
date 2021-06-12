@@ -34,11 +34,28 @@ namespace EmployeeRecordsRepository.Repositories
             return employee.Id;
         }
 
+        public Employee Retrieve(long id)
+        {
+            return _employeeRecordsContext
+                .Employees
+                .Find(id);
+        }
+
         public IEnumerable<Employee> Retrieve()
         {
             return _employeeRecordsContext
                 .Employees
                 .AsEnumerable();
+        }
+
+        public void Delete(Employee employee)
+        {
+            _employeeRecordsContext
+                .Employees
+                .Remove(employee);
+
+            _employeeRecordsContext
+                .SaveChanges();
         }
     }
 }
