@@ -48,6 +48,16 @@ namespace EmployeeRecordsRepository.Repositories
                 .AsEnumerable();
         }
 
+        public void Update(Employee employee)
+        {
+            _employeeRecordsContext
+                .Employees
+                .Update(employee);
+
+            _employeeRecordsContext
+                .SaveChanges();
+        }
+
         public void Delete(Employee employee)
         {
             _employeeRecordsContext

@@ -8,6 +8,7 @@ namespace EmployeeRecordsRepository.Interfaces
         long Create(Employee employee);
         Employee Retrieve(long id);
         IEnumerable<Employee> Retrieve();
+        void Update(Employee employee);
         void Delete(Employee employee);
     }
 }

@@ -17,6 +17,18 @@ namespace EmployeeRecordsDomain.Entities
             Name = name;
         }
 
+        public Result Update(EmployeeUpdateDto employeeUpdateDto)
+        {
+            if (employeeUpdateDto == null)
+                return Result.Failure("EmployeeUpdateDto Required");
+
+            var nameUpdateResult = Name.Update(employeeUpdateDto);
+            if (nameUpdateResult.IsFailure)
+                return Result.Failure(nameUpdateResult.Error);
+
+            return Result.Success();
+        }
+
         public static Result<Employee> Create(EmployeeCreateDto employeeCreateDto)
         {
             if (employeeCreateDto == null)

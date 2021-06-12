@@ -38,6 +38,17 @@ namespace EmployeeRecordsApi.Controllers.V1
             return Ok(_iEmployeeService.Retrieve());
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, EmployeeUpdateDto employeeUpdateDto)//Todo: Add different return code if employee does not exist
+        {
+            var deleteResult = _iEmployeeService.Update(id, employeeUpdateDto);
+
+            if (deleteResult.IsFailure)
+                return BadRequest(deleteResult.Error);
+            else
+                return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

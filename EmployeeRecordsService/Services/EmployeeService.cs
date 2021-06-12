@@ -49,6 +49,23 @@ namespace EmployeeRecordsService.Services
                 });
         }
 
+        public Result Update(long id, EmployeeUpdateDto employeeUpdateDto)
+        {
+            var employee = _iEmployeeRepository.Retrieve(id);
+
+            if (employee == null)
+                return Result.Failure("Employee does not exists");
+
+            var updateResult = employee.Update(employeeUpdateDto);
+
+            if(updateResult.IsFailure)
+                return Result.Failure(updateResult.Error);
+
+            _iEmployeeRepository.Update(employee);
+
+            return Result.Success();
+        }
+
         public Result Delete(long id)
         {
             var employee = _iEmployeeRepository.Retrieve(id);
