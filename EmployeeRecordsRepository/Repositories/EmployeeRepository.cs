@@ -1,10 +1,11 @@
 ﻿using EmployeeRecordsDomain.Entities;
+using EmployeeRecordsRepository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace EmployeeRecordsRepository.Repositories
 {
-    public sealed class EmployeeRepository
+    public sealed class EmployeeRepository: IEmployeeRepository
     {
         private readonly EmployeeRecordsContext _employeeRecordsContext;
 
